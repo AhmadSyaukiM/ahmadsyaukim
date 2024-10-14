@@ -1,0 +1,2378 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat";
+  overflow-x: hidden;
+  height: 40.5rem;
+  background-color: #1C1C1C;
+  font-family: Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: "Montserrat";
+
+}
+
+/* Navbar edit */
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1C1C1C;
+  position: relative;
+}
+
+nav.sticky {
+  position: fixed; /* Posisi fixed saat sticky */
+  top: 0; /* Menempel di atas */
+  width: 100%; /* Lebar 100% */
+  z-index: 100; /* Pastikan di atas konten lain */
+}
+
+.logo {
+  font-family: "Montserrat";
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  z-index: 10; /* Tetap di atas nav links */
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li {
+  padding: 10px 20px; /* Tambah padding untuk lebih ruang */
+  position: relative; /* Untuk pseudo-element */
+}
+
+.nav-links li a {
+  color: white;
+  font-family: "Montserrat";
+  font-weight: 580;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s ease;
+  padding: 10px 0; /* Hapus padding horizontal agar border tepat di bawah teks */
+  border-radius: 5px; /* Tambah border radius untuk sudut yang halus */
+  overflow: hidden; /* Untuk menyembunyikan border yang keluar */
+  display: inline-block; /* Agar border mengikuti lebar teks */
+}
+
+
+
+.nav-links li a.active {
+  color: #88D66C; /* Warna hijau untuk link aktif */
+}
+
+.nav-links li a::after {
+  content: '';
+  position: absolute;
+  left: 15px; /* Mulai dari kiri */
+  bottom: 10px; /* Jarak dari teks ke border */
+  width: 70%; /* Lebar border */
+  height: 3px; /* Ketebalan border */
+  background-color: #88D66C; /* Warna border hijau */
+  transform: translateX(-110%) scaleX(0); /* Mulai dari kiri */
+  transition: transform 0.5s ease; /* Efek transisi */
+}
+
+.nav-links li a:hover::after {
+  transform: translateX(0) scaleX(1); /* Muncul dari kiri */
+}
+
+.nav-links li a.active::after {
+  transform: translateX(0) scaleX(1); /* Tetap terlihat untuk link aktif */
+}
+
+.burger {
+  display: none;
+  cursor: pointer;
+  position: absolute; /* Tetap di pojok kanan atas */
+  right: 20px;
+  top: 15px;
+  z-index: 10; /* Tetap di atas nav links */
+}
+
+.burger div {
+  height: 3px;
+  background-color: white;
+  margin: 5px 0; /* Jarak vertikal antar garis */
+  transition: all 0.3s ease;
+}
+
+.burger .line1, .burger .line3 {
+  width: 25px; /* Full width */
+}
+
+.burger .line2 {
+  width: 12.5px; /* Setengah dari panjang garis lainnya */
+  margin: auto; /* Agar berada di tengah antara line1 dan line3 */
+}
+
+/* home text edit */
+.containerhome {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start; /* Original alignment for desktop */
+  margin-left: 10rem; /* Space from the left */
+  
+  /* Animasi untuk muncul dari kiri */
+  opacity: 0; /* Awalnya tidak terlihat */
+  animation: slideInFromLeft 1s ease-out 0.5s forwards; /* Durasi 1 detik, delay 0.5 detik */
+  transform: translateX(-100%);
+  transition: all 0.5s ease-out; /* Smooth transition saat animasi diulang */
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%); /* Mulai dari luar layar kiri */
+    opacity: 0; /* Tidak terlihat */
+  }
+  100% {
+    transform: translateX(0); /* Masuk ke posisi normal */
+    opacity: 1; /* Sepenuhnya terlihat */
+  }
+}
+
+.containerhome.hidden {
+  animation: slideOutToLeft 1s ease-out forwards; /* Animasi untuk menyembunyikan */
+}
+
+@keyframes slideOutToLeft {
+  0% {
+    transform: translateX(0); /* Start in normal position */
+    opacity: 1; /* Fully visible */
+  }
+  100% {
+    transform: translateX(-100%); /* Move out to the left */
+    opacity: 0; /* Fully invisible */
+  }
+}
+
+.welcometext {
+  color: #fff;
+  font-size: 30px;
+  text-align: left;
+  margin-top: 8rem;
+}
+
+.titletext {
+  color: #fff;
+  font-size: 50px;
+  text-align: left;
+  margin-top: 2rem;
+}
+
+.titletext2 {
+  color: #fff;
+  font-size: 51px;
+  text-align: left;
+  margin-top: 1rem;
+}
+
+.spantext {
+  color: #fff;
+  font-size: 15px;
+  text-align: left;
+  margin-top: 1rem;
+  display: inline-block; /* Ensures the text stays within its block and wraps down */
+  width: 210px; /* Adjust this width to control the wrapping */
+  line-height: 1.5; /* Optional for better spacing between lines */
+  word-wrap: break-word; /* Allows text to break and wrap to next line */
+}
+/* end home text edit */
+
+/* start home elemen edit  */
+/* From Uiverse.io by Juanes200122 */ 
+
+.containerelemen {
+  transition: all 15s ease-out; /* Smooth transition saat animasi diulang */
+  animation: slideInContainerelemen 1s ease-out 0.5s forwards; /* Slide in animation */
+  background-color: #41414100;
+  position: absolute; /* Gunakan absolute */
+  top: 200px; /* Atur jarak dari atas */
+  right: 150px; /* Atur jarak dari kanan */
+  transform: translate(-50%, 0); /* Menyeimbangkan posisi */
+}
+
+/* Keyframes for containerelemen animation */
+@keyframes slideInContainerelemenFromRight {
+  0% {
+    transform: translateX(0); /* Off-screen */
+    opacity: 0; /* Hidden */
+  }
+  50% {
+    transform: translateX(-150%); /* Slide to original position */
+    opacity: 1; /* Fully visible */
+  }
+}
+
+.containerelemen.hidden {
+  opacity: 0; /* Fade out */
+  transform: translateX(50px); /* Move down slightly when hidden */
+}
+
+/* Keyframes for containerelemen animation */
+@keyframes slideOutContainerelemenToRight {
+  0% {
+    transform: translateX(310%); /* Off-screen */
+    opacity: 1; /* Hidden */
+  }
+  50% {
+    transform: translateX(-50%); /* Slide to original position */
+    opacity: 0; /* Fully visible */
+  }
+}
+
+
+
+
+/* Animasi tetap seperti yang Anda buat sebelumnya */
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translate(0px, 36px);
+  }
+  50% {
+    transform: translate(0px, 46px);
+  }
+}
+
+@keyframes bounce2 {
+  0%,
+  100% {
+    transform: translate(0px, 46px);
+  }
+  50% {
+    transform: translate(0px, 56px);
+  }
+}
+
+@keyframes umbral {
+  0% {
+    stop-color: #88D66C;
+  }
+  50% {
+    stop-color: #88D66C;
+  }
+  100% {
+    stop-color: #d3a5102e;
+  }
+}
+
+@keyframes partciles {
+  0%,
+  100% {
+    transform: translate(0px, 16px);
+  }
+  50% {
+    transform: translate(0px, 6px);
+  }
+}
+
+#particles {
+  animation: partciles 4s ease-in-out infinite;
+}
+#animatedStop {
+  animation: umbral 4s infinite;
+}
+#bounce {
+  animation: bounce 4s ease-in-out infinite;
+  transform: translate(0px, 36px);
+}
+#bounce2 {
+  animation: bounce2 4s ease-in-out infinite;
+  transform: translate(0px, 46px);
+  animation-delay: 0.5s;
+}
+
+/* end home elemen edit */
+
+/* Start about edit */
+.lineabout1 {
+  width: 6px;
+  align-items: left;
+  justify-content: left;
+  text-align: left;
+  position: absolute;
+  left: 38px;
+  top: 40rem;
+  height: 210px;
+  background-color: rgb(255, 255, 255);
+}
+
+.abouttext {
+  color: #fff;
+  font-family: "Montserrat";
+  transform: rotate(-90deg); /* Rotate the text */
+  position: absolute; /* Set absolute positioning */
+  top: 56rem; /* Align to the top */
+  left: 0; /* Align to the left */
+  margin: 0; /* Remove any default margin */
+  text-align: left;
+  display: block; /* Block display for full-width control */
+}
+
+.lineabout2 {
+  width: 6px;
+  align-items: left;
+  justify-content: left;
+  text-align: left;
+  position: absolute;
+  left: 38px;
+  top: 61rem;
+  height: 190px;
+  background-color: rgb(255, 255, 255);
+}
+/* End About edit */
+
+/* start about img */
+.aboutimage {
+  justify-content: left;
+  align-items: flex-end;
+  top: 47rem;
+  left: 10rem;
+  position: absolute;
+  object-fit: cover;
+  width: 300px;
+  height: 300px;
+  opacity: 0;
+  transform: translateY(-30px); /* Starting position (downward) */
+  transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
+}
+.fade-in {
+  opacity: 1;
+  transform: translateX(0); /* Reset transform to move element to its original position */
+}
+
+.fade-out {
+  opacity: 0;
+  transform: translateX(-30px); /* Move down slightly when hidden */
+}
+/* end about img */
+
+/* start text about  */
+.numone {
+  position: absolute;
+  top: 43.7rem;
+  right: 44rem;
+  font-size: 32px;
+  font-family: "Montserrat";
+  font-weight: 785;
+  color: rgb(255, 255, 255);
+}
+/* end text about */
+
+/* start titl about */
+
+
+.personal {
+  top: 47.5rem;
+  position: absolute;
+  text-align: center;
+  left: 32.7rem;
+  font-size: 32px; /* Adjust to match the size in the image */
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700; /* Slightly reduce to match the weight in the image */
+  color: #fff;
+}
+
+.personal2 {
+  position: absolute;
+  top: 49.9rem;
+  left: 32.7rem;
+  width: auto; /* Allow width to adjust based on content */
+  max-width: 400px; /* Set a maximum width to control text wrapping */
+  font-size: 33px; /* Adjust font size */
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700; /* Adjust font weight */
+  color: #fff;
+  white-space: normal; /* Allow text to wrap */
+  line-height: 1.5; /* Adjust the spacing between lines */
+}
+
+.spantextabout {
+  position :absolute;
+  top: 56.6rem;
+  left: 32.8rem;
+  color: rgb(255, 255, 255);
+  display: inline-block; /* Ensures the text stays within its block and wraps down */
+  width: 410px; /* Adjust this width to control the wrapping */
+  line-height: 1.5; /* Optional for better spacing between lines */
+  word-wrap: break-word; /* Allows text to break and wrap to next line */
+}
+
+/* From Uiverse.io by WAIOKYERE */ 
+ul {
+  list-style: none;
+}
+
+.example-2 {
+  position: absolute;
+  top: 67rem;
+  left: 32.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.example-2 .icon-content {
+  margin: 0 10px;
+  position: relative;
+}
+
+.example-2 .icon-content .tooltip {
+  position: absolute;
+  bottom: -30px; /* Ubah dari top ke bottom */
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 15px;
+  opacity: 0;
+  visibility: hidden;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.example-2 .icon-content:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+  bottom: -50px; /* Ubah dari top ke bottom */
+}
+
+.example-2 .icon-content a {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 20%;
+  background-color: #ffff;
+  transition: all 0.3s ease-in-out;
+}
+
+.example-2 .icon-content a:hover {
+  box-shadow: 3px 2px 45px 0px rgb(0 0 0 / 50%);
+}
+
+.example-2 .icon-content a svg {
+  position: relative;
+  z-index: 1;
+  width: 30px;
+  height: 30px;
+}
+
+.example-2 .icon-content a:hover {
+  color: white;
+}
+
+.example-2 .icon-content a .filled {
+  position: absolute;
+  top: auto;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background-color: #000;
+  transition: all 0.3s ease-in-out;
+}
+
+.example-2 .icon-content a:hover .filled {
+  height: 100%;
+}
+
+.example-2 .icon-content a[data-social="spotify"] .filled,
+.example-2 .icon-content a[data-social="spotify"] ~ .tooltip {
+  background: #ff5a9e;
+}
+
+.example-2 .icon-content a[data-social="pinterest"] .filled,
+.example-2 .icon-content a[data-social="pinterest"] ~ .tooltip {
+  background-color: #2DBA4E;
+}
+
+.example-2 .icon-content a[data-social="dribbble"] .filled,
+.example-2 .icon-content a[data-social="dribbble"] ~ .tooltip {
+  background-color: #0088cc;
+}
+
+.example-2 .icon-content a[data-social="telegram"] .filled,
+.example-2 .icon-content a[data-social="telegram"] ~ .tooltip {
+  background-color: #0073ad;
+}
+
+/* Animasi masuk */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animasi keluar lambat */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+/* Styling untuk elemen yang masuk saat refresh */
+#aboutmove, .socialcontainer, .spanabout {
+  opacity: 0;
+  animation: fadeIn 1.5s forwards;
+  animation-delay: 0.5s;
+}
+
+/* Styling untuk hilang ketika di-scroll */
+.hide {
+  animation: fadeOut 1s forwards;
+}
+
+/* Base styles for the aboutmove section */
+.aboutmove {
+  opacity: 1; /* Default state - fully visible */
+  transform: translateY(0); /* Default position - no vertical translation */
+  transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition for both opacity and movement */
+}
+
+/* Class to slide in the aboutmove section when it enters the viewport */
+.aboutmove-slide-in {
+  opacity: 1; /* Fully visible */
+  transform: translateY(0); /* No movement, in its original position */
+}
+
+/* Class to slide out the aboutmove section when it leaves the viewport */
+.aboutmove-slide-out {
+  opacity: 0; /* Hidden (fully transparent) */
+  transform: translateY(50px); /* Slight vertical slide when it's disappearing */
+}
+
+
+
+
+/*  */
+/* .plate {
+  width: fit-content;
+}
+
+.plate .black,
+.plate .white,
+.plate .center,
+.plate .border {
+  border-radius: 100%;
+}
+
+.container,
+.plate .black,
+.plate .white,
+.plate .border {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.plate .black {
+  width: 150px;
+  height: 150px;
+  background-color: #675D50;
+  animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+.plate .white {
+  width: 70px;
+  height: 70px;
+  background-color: #F3DEBA;
+}
+
+.plate .center {
+  width: 20px;
+  height: 20px;
+  background-color: #675D50;
+}
+
+.plate .border {
+  width: 111px;
+  height: 111px;
+  border-top: 3px solid #F3DEBA;
+  border-bottom: 3px solid #F3DEBA;
+  border-left: 3px solid #675D50;
+  border-right: 3px solid #675D50;
+}
+
+.player {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: fit-content;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 8px;
+  margin-right: 8px;
+  rotate: -45deg;
+}
+
+.player .circ {
+  width: 25px;
+  height: 25px;
+
+  border-radius: 100%;
+  z-index: 1;
+}
+
+.player .rect {
+  width: 10px;
+  height: 55px;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 5px;
+} */
+
+/* skill contain start edit */
+
+
+.textskill2 {
+  text-align: left;
+  position: absolute;
+  top: 143.8rem;
+  left: 4rem;
+  color: #fff;
+  font-size: 31px;
+  font-weight: bolder;
+  font-family: "Montserrat";
+}
+
+.textskill {
+  text-align: left;
+  font-family: "Montserrat";
+  position: absolute;
+  top: 118rem;
+  left: 4rem;
+  color: #fff;
+  font-size: 31px;
+  font-weight: bolder;
+}
+
+.containerskill {
+  position: absolute;
+  max-width: 500px;
+  width: 100%;
+  margin: 0 15px;
+  padding: 10px 20px;
+  border-radius: 7px;
+  top: 122rem; /* Adjust this value to control its position relative to the social icons */
+  left: 2rem; /* Adjust left positioning as needed */
+  z-index: 1; /* Ensures it's above background elements */
+}
+
+.containerskill .skill-box {
+  width: 100%;
+  margin: 25px 0;
+}
+
+.skill-box .title {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.skill-box .skill-bar {
+  height: 8px;
+  width: 100%;
+  border-radius: 6px;
+  margin-top: 6px;
+  background: rgb(255, 255, 255);
+}
+
+.skill-bar .skill-per {
+  position: relative;
+  display: block;
+  height: 100%;
+  width: 90%;
+  border-radius: 6px;
+  background: #7FE05D;
+  animation: progress 0.4s ease-in-out forwards;
+  opacity: 0;
+}
+
+.skill-per.html {
+   /*progreso de las diferentes lenguajes*/
+  width: 85%;
+  animation-delay: 0.1s;
+}
+
+.skill-per.css {
+         /*progreso de las diferentes lenguajes*/
+  width: 85%;
+  animation-delay: 0.1s;
+}
+
+.skill-per.javascript {
+      /*progreso de las diferentes lenguajes*/
+  width: 55%;
+  animation-delay: 0.2s;
+}
+
+.skill-per.nodejs {
+      /*progreso de las diferentes lenguajes*/
+  width: 30%;
+  animation-delay: 0.3s;
+}
+
+.skill-per.flutter {
+  /*progreso de las diferentes lenguajes*/
+width: 40%;
+animation-delay: 0.3s;
+}
+
+
+.design {
+  position: absolute;
+  max-width: 500px;
+  width: 100%;
+  margin: 0 15px;
+  padding: 10px 20px;
+  border-radius: 7px;
+  top: 148rem; /* Adjust this value to control its position relative to the social icons */
+  left: 2rem; /* Adjust left positioning as needed */
+  z-index: 1; /* Ensures it's above background elements */
+}
+
+.skill-per.figma  {
+  /*progreso de las diferentes lenguajes*/
+width: 90%;
+animation-delay: 0.3s;
+}
+
+@keyframes progress {
+  0% {
+    width: 0;
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.skill-per .tooltipe {
+  position: absolute;
+  right: -14px;
+  top: -28px;
+  font-size: 9px;
+  font-weight: 900;
+  color: #000000;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: #7FE05D;
+  z-index: 1;
+}
+
+.tooltipe::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -2px;
+  height: 10px;
+  width: 10px;
+  z-index: -1;
+  background-color: #7FE05D;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+
+
+
+.skillanimation {
+  position: relative;
+  overflow: hidden; /* Prevents overflow during animation */
+  height: 100vh; /* Optional: Set height to create space for scrolling */
+}
+
+.skillanimation {
+  opacity: 0;
+  transform: translateY(100%); /* Start below the view */
+  animation: skillanimation-slideInUp 0.5s forwards; /* Slide-in animation */
+  transition: opacity 0.5s ease-in-out;
+}
+
+.skillanimation-visible {
+  opacity: 1; /* Fade in */
+  transform: translateY(0); /* Move to original position */
+}
+
+.skillanimation-leaving {
+  opacity: 0; /* Fade out */
+  transform: translateY(100%); /* Move down to disappear */
+}
+
+/* Slide-in animation */
+@keyframes skillanimation-slideInUp {
+  0% {
+    transform: translateY(100%); /* Start below the view */
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0); /* End at original position */
+    opacity: 1;
+  }
+}
+
+/* Slide-out animation */
+@keyframes skillanimation-slideOutDown {
+  0% {
+    transform: translateY(0); /* Start at original position */
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%); /* Move down to disappear */
+    opacity: 0;
+  }
+}
+
+.skillcontain {
+  position: absolute; /* Set to absolute */
+  top: 128.5rem; /* Adjust the top position as needed */
+  left: 42rem; /* Center the container */
+  transform: translateX(-50%); /* Centering adjustment */
+}
+
+
+
+.containerskills {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Change to 1fr for equal width columns */
+  gap: 10px; /* Reduce gap between cards */
+  justify-content: center;
+  align-items: center;
+}
+
+.containerskills .glass {
+  position: relative;
+  width: 120px; /* Make the cards smaller */
+  height: 140px; /* Adjust height accordingly */
+  background: linear-gradient(#fff2, transparent);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  border-radius: 10px;
+  margin: 0; /* Remove margins for tight fit */
+  backdrop-filter: blur(10px);
+  transform: rotate(calc(var(--r) * 1deg));
+}
+
+.containerskills:hover .glass {
+  transform: rotate(0deg);
+}
+
+.containerskills .glass::before {
+  content: attr(data-text);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.containerskills .glass svg {
+  font-size: 2em; /* Adjust size of icons */
+  fill: #fff;
+    margin-bottom: 30px; /* Adjust this value to control spacing between icon and text */
+}
+
+/* Color for HTML */
+
+
+/* end skill contain edit */
+.lineabout3 {
+  width: 6px;
+  align-items: left;
+  justify-content: left;
+  text-align: left;
+  position: absolute;
+  right:40px;
+  top: 118.6rem;
+  height: 210px;
+  background-color: rgb(255, 255, 255);
+}
+
+.abouttext4 {
+  color: #fff;
+  font-family: "Montserrat";
+  transform: rotate(90deg); /* Rotate the text */
+  position: absolute; /* Set absolute positioning */
+  top: 134.3rem; /* Align to the top */
+  right: 10px; /* Align to the left */
+  margin: 0; /* Remove any default margin */
+  text-align: left;
+  display: block; /* Block display for full-width control */
+}
+
+.lineabout4 {
+  width: 6px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: absolute;
+  right: 40px;
+  top: 138.9rem;
+  height: 190px;
+  background-color: rgb(255, 255, 255);
+}
+
+
+.containerproject {
+  position: absolute;
+  top: 180rem;
+  left: 11.3rem;
+  border-radius: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 50px; /* Space between cardproj */
+  max-width: 950px; /* Set maximum width to constrain the cardproj container */
+}
+
+.cardproj {
+  background-color: #252525;
+  border-radius: 15px;
+  width: calc(33.33% - 20px); /* Set width for three cardproj in a row */
+  box-shadow: 0 8px 16px rgba(120, 120, 120, 0.096);
+  color: #fff;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 20px; /* Add space between cardproj when they stack on smaller screens */
+}
+
+.cardproj img {
+  border-top-left-radius: 15px; /* Border radius for bottom-left corner */
+  border-top-right-radius: 15px; /* Border radius for bottom-left corner */
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.cardproj-content {
+  padding: 15px;
+  text-align: center;
+}
+
+.cardproj-content h3 {
+  margin: 0;
+  text-align: left;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.cardproj-content .author {
+  text-align: left;
+  font-size: 0.9em;
+  color: #cccccc5c;
+  margin: 5px 0 10px;
+}
+
+.profile {
+  z-index: 10;
+  position: absolute;
+  top: 226px;
+  left: -25px;
+  width: 50px;
+
+  height: 50px;
+  border: 3px solid #dbdbdb;
+  border-radius: 10%;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: rgb(255, 255, 255);
+}
+
+.profile .imgpr {
+  border-radius: 0; 
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cardproj-footer {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  padding: 20px 15px;
+  border-bottom-left-radius: 15px; /* Border radius for bottom-left corner */
+  border-bottom-right-radius: 15px; /* Border radius for bottom-left corner */
+  background-color: #333;
+  position: relative;
+}
+
+.fa-regular {
+  font-size: 15px;
+}
+
+
+
+.titlepro {
+  position: absolute;
+  left: 41%; /* Posisikan elemen di tengah secara horizontal */
+  top: 170rem; /* Atur jarak dari atas sesuai keinginan */
+  transform: translateX(-50%); /* Geser elemen setengah lebar elemen sendiri ke kiri */
+  color: #ffffff;
+  font-size: 35px;
+}
+
+.textexp {
+  text-align: center;
+  top: 220rem;
+  position: absolute;
+  left: 67%; /* Posisikan elemen di tengah secara horizontal */
+  transform: translateX(-50%); /* Geser elemen setengah lebar elemen sendiri ke kiri */
+  color: #ffffff;
+  font-size: 40px;
+}
+
+
+.button2 {
+  padding: 8px 15px;
+  margin: 4px;
+  background-color: rgb(96, 96, 96); /* Warna latar belakang dengan transparansi */
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+  font-size: 0.9em;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  backdrop-filter: blur(40px); /* Efek blur di belakang tombol */
+  box-shadow: 0 4px 10px rgba(21, 21, 21, 0.685); /* Bayangan untuk efek kedalaman */
+  transition: background-color 0.3s ease; /* Transisi untuk efek hover */
+}
+
+/* Hover effect untuk tombol */
+.button2hover {
+  color: white;
+  border: solid white 2px;
+  background-color: rgba(45, 186, 78, 0); /* Meningkatkan opacity saat hover */
+}
+
+
+.dots {
+  justify-content: left;
+  right: 10px;
+  font-size: 1.5em;
+  cursor: pointer;
+  position: absolute;
+  margin: 10px;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: transparent;
+  border-radius: 50%;
+  padding: 10px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.dropdown.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dropdown a {
+  display: inline-block;
+  margin: 5px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 50%;
+  text-align: center;
+  color: #252525;
+  width: 25px;
+  height: 25px;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown a:hover {
+  background-color: #e0e0e0;
+}
+
+.dropdown a img {
+  width: 24px;
+  height: 24px;
+  display: block;
+  margin: 0 auto;
+}
+
+input[type=radio] {
+  display: none;
+}
+
+.card {
+  position: absolute;
+  width: 60%;
+  height: 100%;
+  left: 340px;
+  right: 0;
+  top: 230rem;
+  margin: auto;
+  transition: transform .4s ease;
+  cursor: pointer;
+}
+
+.carousel-container {
+  width: 100%;
+  max-width: 800px;
+  max-height: 600px;
+  height: 100%;
+  transform-style: preserve-3d;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cards {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 20px;
+}
+
+.imgs {
+  object-fit: cover;
+  width: 130%;
+  height: 60%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+#item-1:checked ~ .cards #song-3, #item-2:checked ~ .cards #song-1, #item-3:checked ~ .cards #song-2 {
+  transform: translatex(-40%) scale(.8);
+  opacity: .4;
+  z-index: 0;
+}
+
+#item-1:checked ~ .cards #song-2, #item-2:checked ~ .cards #song-3, #item-3:checked ~ .cards #song-1 {
+  transform: translatex(40%) scale(.8);
+  opacity: .4;
+  z-index: 0;
+}
+
+#item-1:checked ~ .cards #song-1, #item-2:checked ~ .cards #song-2, #item-3:checked ~ .cards #song-3 {
+  transform: translatex(0) scale(1);
+  opacity: 1;
+  z-index: 1;
+  
+  .imgs {
+    box-shadow: 0px 0px 5px 0px rgba(81, 81, 81, 0.47);
+  }
+}
+
+.player {
+  background-color: #fff;
+  border-radius: 8px;
+  min-width: 320px;
+  padding: 16px 10px;
+}
+
+.upper-part {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  height: 36px;
+  overflow: hidden;
+}
+
+.play-icon{ margin-right: 10px; }
+
+.song-info {
+  width: calc(100% - 32px);
+  display: block;
+}
+
+.song-info .title {
+  color: #403d40;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.sub-line {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.subtitle, .time {
+  font-size: 12px;
+  line-height: 16px;
+  color: #c6c5c6;
+}
+
+.time {
+  font-size: 12px;
+  line-height: 16px;
+  color: #a5a5a5;
+  font-weight: 500;
+  margin-left: auto;
+}
+
+.progress-bar {
+  height: 3px;
+  width: 100%;
+  background-color: #e9efff;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress {
+  display: block;
+  position: relative;
+  width: 60%;
+  height: 100%;
+  background-color: #2992dc;
+  border-radius: 6px;
+}
+
+.info-area {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 30px;
+  transition: transform .4s ease-in;
+}
+
+#item-2:checked ~ .player #test {
+  transform: translateY(0);
+}
+
+#item-2:checked ~ .player #test  {
+  transform: translateY(-40px);
+}
+
+#item-3:checked ~ .player #test  {
+  transform: translateY(-80px);
+}
+
+
+.h1exp  {
+  font-weight: bold;
+  font-family: "Montserrat";
+  font-size: 30px;
+  margin-left: 5rem;
+  margin-right: auto;
+  color: white;
+  text-align: center;
+  width: 100%;
+}
+
+.span1exp {
+  text-align: center;
+  line-height: 2rem;
+  color: white;
+  display: block;
+  width: 100%;
+  margin-left: 4.8rem;
+  margin-right: auto;
+  margin-top: 0.5rem;
+  font-size: 16px;
+  font-family: "Montserrat";
+}
+
+.form-container {
+  justify-content: left;
+  align-items: left;
+  position:absolute;
+  top: 315rem;
+  left: 50px;
+}
+
+.titlecontact {
+color: white;
+font-size: 3rem;
+}
+
+.spancontact {
+  font-weight: bold;
+  color: #D9D9D9;
+
+}
+
+.textemail {
+  cursor: pointer;
+  left: 195px;
+  position: absolute;
+  color: #0095FF;
+}
+
+/* Form styling */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* Jarak antar elemen form sebesar 30px */
+  width: 390px;
+  background-color: #ffffff00; /* Latar belakang form */
+  padding: 20px; /* Padding dalam form */
+  border-radius: 10px;
+  padding-left: 20px; /* Added padding on the left */ /* Added padding on the right */
+  position: relative;
+  margin: 20px auto; /* Jarak atas dan posisi form di tengah */
+}
+
+/* Styling for input fields */
+.form label {
+  position: relative;
+}
+
+/* Input field styling */
+.form label .input,
+.form label .input01 {
+  width: 123%;
+  opacity: 50%;
+  padding: 10px 10px 10px 10px;
+  outline: 0;
+  border: 1px solid rgba(137, 158, 153, 0.5); /* Border dengan warna  dan opacity 50% */
+  border-radius: 30px; /* Membuat sudut lebih membulat */
+  background-color: #899E99; /* Warna latar belakang input */
+  color: #333; /* Warna teks input */
+}
+
+.form .input2 {
+  width: 130%;
+  margin-left: 1.5rem;
+  padding: 10px 10px 10px 10px;
+  outline: 0;
+  opacity: 50%;
+  border: 1px solid rgba(137, 158, 153, 0.5); /* Border dengan warna  dan opacity 50% */
+  border-radius: 20px; /* Membuat sudut lebih membulat */
+  background-color: #899E99; /* Warna latar belakang input */
+  color: #333; /* Warna teks input */
+}
+
+.form .input3 {
+  opacity: 50%;
+  width: 112%;
+  padding: 10px 10px 10px 10px;
+  outline: 0;
+  border: 1px solid rgba(137, 158, 153, 0.5); /* Border dengan warna  dan opacity 50% */
+  border-radius: 20px; /* Membuat sudut lebih membulat */
+  background-color: #899E99; /* Warna latar belakang input */
+  color: #333; /* Warna teks input */
+}
+
+.full {
+  font-family: "Montserrat";
+  opacity: 62%;
+  text-align: left;
+  font-weight: 600;
+  color: rgb(255, 255, 255);
+  z-index: 19;
+  top: 10px;
+  left: 13px;
+  font-size: 15px;
+  position: absolute;
+  width: 100%;
+}
+
+.eml {
+  text-align: left;
+  font-family: "Montserrat";
+  opacity: 62%;
+  font-weight: 600;
+  color: rgb(255, 255, 255);
+  z-index: 19;
+  top: 10px;
+  font-size: 15px;
+  margin-left: 1rem;
+  position: absolute;
+  width: 100%;
+}
+
+
+
+
+.iconfull {
+  position: absolute;
+  z-index: 10;
+  top: 4px;
+  left: 140px;
+  width: 30px;
+  height: 30px;
+}
+
+.iconemail {
+  position: absolute;
+  z-index: 10;
+  top: 6px;
+  left: 218px;
+  width: 25px;
+  height: 25px;
+}
+
+.iconnumber {
+  position: absolute;
+  z-index: 10;
+  top: 9px;
+  left: 395px;
+  width: 20px;
+  height: 20px;
+}
+
+.iconmassage {
+  position: absolute;
+  z-index: 10;
+  top: 9px;
+  left: 395px;
+  width: 20px;
+  height: 20px;
+}
+
+
+/* Placeholder styling */
+.form label .input + span,
+.form label .input2 + span,
+.form label .input3 + span,
+.form label .input01 + span {
+  position: absolute;
+  left: 20px; /* Posisi placeholder dari kiri */
+  font-family: "Montserrat";
+  opacity: 62%;
+  font-weight: 600;
+  color: rgb(255, 255, 255);
+  font-size: 0.9em;
+  cursor: text;
+  transition: 0.3s ease;
+}
+
+/* Placeholder adjustment when input is empty */
+.form label .input:placeholder-shown + span,
+.form label .input01:placeholder-shown + span,
+.form label .input2:placeholder-shown + span,
+.form label .input3:placeholder-shown + span {
+  top: 11px;
+  font-size: 0.9em;
+}
+
+/* Placeholder and label styling when input is focused or valid */
+.form label .input:focus + span,
+.form label .input:valid + span,
+.form label .input01:focus + span,
+.form label .input01:valid + span,
+.form label .input2:focus + span,
+.form label .input2:valid + span,
+.form label .input3:focus + span,
+.form label .input3:valid + span {
+  top: -21px;
+  font-size: 0.7em;
+  font-weight: 600;
+}
+
+
+/* Valid state for input fields */
+.form label .input:valid + span,
+.form label .input01:valid + span {
+  color: green; /* Warna label saat valid */
+}
+
+/* Textarea styling */
+.input01 {
+  width: 100%;
+  padding: 10px 10px 20px 10px;
+  outline: 0;
+  border: 1px solid rgba(137, 158, 153, 0.5); /* Border dengan warna #899E99 dan opacity 50% */
+  border-radius: 5px; /* Sudut textarea lebih kecil */
+}
+
+/* Fancy button styling */
+.fancy {
+  width: 190px;
+  height: 45px;
+  font-family: "Montserrat";
+  background-color: transparent;
+  border: 2px solid rgba(137, 158, 153, 0.5); /* Warna tombol border */
+  border-radius: 10px;
+  box-sizing: border-box;
+  color: #899E99;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: bold;
+  margin: 0;
+  outline: none;
+  overflow: visible;
+  padding: 8px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  text-transform: none;
+  transition: all 0.3s ease-in-out;
+  user-select: none;
+  font-size: 17px;
+}
+
+/* Button hover effect */
+.fancy:hover {
+  color: white;
+  background-color: rgba(137, 158, 153, 0.5); /* Warna hover tombol */
+}
+
+/* Button decoration keys */
+.fancy::before {
+  content: "";
+  width: 1.7rem;
+  background: #cacaca;
+  top: 50%;
+  left: 1.5em;
+  position: absolute;
+  transform: translateY(-50%);
+  transform-origin: center;
+  transition: background 0.3s linear, width 0.3s linear;
+}
+
+/* Text and key styling for the button */
+.fancy .text {
+  font-family: "Montserrat";
+  font-size: 1.125em;
+  line-height: 1.33333em;
+  padding-left: 2em;
+  display: block;
+  text-align: left;
+  top: 6px;
+  left: -15px;
+  position: absolute;
+  transition: all 0.3s ease-in-out;
+  text-transform: lowercase;
+  text-decoration: none;
+  color: #ffffff;
+  transform: translateX(30%);
+}
+
+/* Key styling for button */
+.fancy .top-key,
+.fancy .bottom-key-1,
+.fancy .bottom-key-2 {
+  height: 2px;
+  background: white;
+  transition: width 0.5s ease-out;
+}
+
+.fancy .top-key {
+  width: 1.565rem;
+  top: -2px;
+  left: 0.625rem;
+  position: absolute;
+}
+
+.fancy .bottom-key-1 {
+  width: 1.5625rem;
+  right: 1.875rem;
+  bottom: -2px;
+  position: absolute;
+}
+
+.fancy .bottom-key-2 {
+  width: 0.625rem;
+  right: 0.625rem;
+  bottom: -2px;
+  position: absolute;
+}
+
+/* Button hover effect for keys */
+.fancy:hover .top-key {
+  left: -2px;
+  width: 0px;
+}
+
+.fancy:hover .bottom-key-1,
+.fancy:hover .bottom-key-2 {
+  right: 0;
+  width: 0;
+}
+
+/* Flex container styling */
+.flex {
+  margin-top: 1.5rem;
+  display: flex;
+  width: 100%;
+  gap: 6px; /* Jarak antar elemen dalam flex */
+}
+
+.message {
+  color: rgba(88, 87, 87, 0.822);
+  font-size: 14px;
+}
+
+/* end titl about */
+
+/* start image contact */
+.imagecontact {
+  width: 550px;
+  height: 550px;
+  justify-content: right;
+  align-items: right;
+  position: absolute;
+  right: -13px;
+  top: 316rem;
+  object-fit: cover;
+}
+/* end image contatc */
+
+/* Basic footer styling */
+.footer {
+  margin-top: 290rem;
+  background-color: #000000;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  width: 100%;
+  height: 45%;
+  box-sizing: border-box;
+}
+
+.footer-container {
+  font-family: "Montserrat";
+  color: rgb(230, 230, 230);
+  display: flex;
+  flex-direction: row; /* Ubah ke row untuk samping-sampingan */
+  justify-content: space-between; /* Supaya ada yang di kiri dan di tengah */
+  align-items: flex-start; /* Mengatur alignment vertikal */
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap; /* Responsif */
+}
+
+.footer-section {
+  margin: 10px;
+  flex: 1; /* Menyesuaikan ukuran section agar lebih fleksibel */
+}
+
+.footer-section h3 {
+  font-weight: 500;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+}
+
+.footertext {
+  margin-top: 2rem;
+  font-size: 20px;
+  font-weight: 300;
+  font-family: "Montserrat";
+  color: rgb(56, 56, 56);
+  text-align: center;
+}
+
+.footer-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 11px;
+}
+
+.footer-list svg {
+  margin-right: 10px;
+}
+
+.footer-list span {
+  color: #707070;
+  font-size: 1em;
+}
+
+.gpt {
+  opacity: 60%;
+}
+
+.codepen {
+  opacity: 60%;
+  margin-left: 2px;
+}
+
+.ui {
+  margin-top: 3px;
+  margin-left: 9px;
+  opacity: 60%;
+}
+
+.linefooter {
+  width: 1000px;
+  margin-top: 10px;
+  margin-left: 7rem;
+  margin-right: 1rem;
+  border-radius: 50%;
+  height: 1px;
+  background-color: rgba(197, 197, 197, 0.139);
+  justify-content: center;
+}
+
+.button {
+  display: block;
+  position: absolute; /* Mengubah dari relative ke absolute */
+  width: 56px;
+  height: 56px;
+  margin: 0;
+  overflow: hidden;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  border: 0;
+  top: 300; /* Atur posisi atas (bisa disesuaikan) */
+  right: 10px; /* Atur posisi kiri (bisa disesuaikan) */
+}
+
+.button:before,
+.button:after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  inset: 7px;
+}
+
+.button:before {
+  border: 4px solid #f0eeef;
+  transition: opacity 0.4s cubic-bezier(0.77, 0, 0.175, 1) 80ms,
+    transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) 80ms;
+}
+
+.button:after {
+  border: 4px solid #96daf0;
+  transform: scale(1.3);
+  transition: opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+    transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  opacity: 0;
+}
+
+.button:hover:before,
+.button:focus:before {
+  opacity: 0;
+  transform: scale(0.7);
+  transition: opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+    transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.button:hover:after,
+.button:focus:after {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.4s cubic-bezier(0.77, 0, 0.175, 1) 80ms,
+    transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) 80ms;
+}
+
+.button-box {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.button-elem {
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin: 17px 18px 0 18px;
+  transform: rotate(180deg);
+  fill: #f0eeef;
+}
+
+/* Animasi naik ke atas (translateY) */
+.button:hover .button-box,
+.button:focus .button-box {
+  transition: 0.4s;
+  transform: translateY(-56px);
+}
+
+
+
+
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+
+  .nav-links {
+    position: fixed;
+    right: 0;
+    height: 100vh;
+    top: 0;
+    background-color: #1C1C1C;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    transform: translateY(-100%);
+    transition: transform 0.5s ease;
+    z-index: 5;
+  }
+
+  .burger {
+    display: block;
+  }
+
+  /* Bottom bar positioning enhancement */
+.nav-links li a::after {
+  content: '';
+  position: absolute;
+  left: 50%; /* Mulai dari tengah */
+  transform: translateX(-50%) scaleX(0); /* Pusatkan dan sembunyikan garis bawah */
+  bottom: 0; /* Tepat di bawah teks */
+  width: 60%; /* Lebar border bawah */
+  height: 3px; /* Ketebalan border */
+  background-color: #88D66C; /* Warna hijau */
+  transition: transform 0.5s ease; /* Smooth animation */
+}
+
+/* Bottom bar hover effect */
+.nav-links li a:hover::after {
+  transform: translateX(-50%) scaleX(1); /* Muncul dari tengah */
+}
+
+.nav-links li a.active::after {
+  transform: translateX(-50%) scaleX(1); /* Tetap terlihat untuk link aktif */
+}
+
+/* Transition when menu is toggled */
+.burger.toggle .line1 {
+  transform: rotate(-45deg) translate(-5px, 6px); /* Animation for menu close icon */
+}
+
+.burger.toggle .line2 {
+  opacity: 0; /* Hide middle line when toggled */
+}
+
+.burger.toggle .line3 {
+  transform: rotate(45deg) translate(-5px, -6px); /* Animation for menu close icon */
+}
+
+/* Ensure bottom bar stays centered and visible */
+/* Bottom bar for all nav links */
+.nav-links li a::after {
+  content: '';
+  position: absolute;
+  left: 50%; /* Centered */
+  bottom: 0; /* Distance from text */
+  width: 0; /* Hidden by default */
+  height: 3px; /* Thickness of the underline */
+  background-color: #88D66C; /* Green color */
+  transition: all 0.4s ease; /* Smooth transition */
+  transform: translateX(-50%); /* Keep it centered */
+}
+
+/* Bottom bar hover effect */
+.nav-links li a:hover::after, 
+.nav-links li a.active::after {
+  width: 80%; /* Expand the underline on hover and active */
+}
+
+
+  .nav-active {
+    transform: translateY(0);
+  }
+
+  .nav-links li {
+    opacity: 0;
+    padding: 15px 20px;
+    animation: navLinkFade 0.5s ease forwards;
+  }
+
+  .nav-links li:nth-child(1) {
+    animation-delay: 0.2s;
+  }
+
+  .nav-links li:nth-child(2) {
+    animation-delay: 0.4s;
+  }
+
+  .nav-links li:nth-child(3) {
+    animation-delay: 0.6s;
+  }
+
+  .nav-links li:nth-child(4) {
+    animation-delay: 0.8s;
+  }
+
+  @keyframes navLinkFade {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0px);
+    }
+  }
+
+  .toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+
+  .toggle .line2 {
+    opacity: 0;
+  }
+
+  .toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
+
+  /* Center the home container on smaller screens */
+  .containerhome {
+    margin: 0 auto;
+    align-items: left;
+    padding: 1rem;
+    width: 100%;
+  }
+
+  .welcometext {
+    font-size: 30px;
+  }
+  
+  .titletext {
+    font-size: 40px;
+  }
+
+  .titletext2 {
+    font-size: 43px;
+  }
+
+  .spantext {
+    font-size: 16px;
+  }
+
+  /* Responsive styling for containerelemen */
+  .containerelemen {
+    position: relative;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;    
+    transition: transform 0.5s ease-out;
+    max-width: 200px; /* Ensure it's responsive on small screens */
+  } 
+
+  .containerelemen.hidden {
+    opacity: 0;
+    transform: translateX(100%); /* Slide out to the right */
+  }
+
+  
+.about {
+  position: absolute;
+  top: 12rem;
+  left: -1.5rem;
+}
+
+.aboutimg {
+ 
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  right: 6rem;
+  top: -7rem;
+}
+
+.numone {
+  top: 72.9rem;
+  left: 47px;
+}
+
+.personal {
+  top: 76.8rem;
+  left: 47px;
+}
+
+.personal2 {
+  top: 80.5rem;
+  left: 47px;
+  font-size: 25px;
+}
+
+.spantextabout {
+  font-size: 17px;
+  width: 308px;
+  text-wrap: wrap;
+  left: 47px;
+  top: 85.8rem;
+}
+
+.lineabout2 {
+  height: 32rem;
+}
+
+.example-2 {
+  top: 101.5rem;
+  left: 40px;
+}
+
+
+.containerskill {
+  top: 155rem;
+  left: -24px;
+}
+
+.textskill {
+  top: 153rem;
+  left: 10px;
+}
+
+.design {
+  align-items: left;
+  justify-content: left;
+  left: -24px;
+  top: 180rem;
+}
+
+.textskill2 {
+  top: 176.5rem;
+  left: 10px;
+}
+
+.skillcontain {
+  max-width: 100%;
+  justify-content: center;
+  margin: auto;
+  top: 185rem;
+  left: 35px;
+}
+
+.containerskills .glass  {
+  width: 85px;
+  height: 100px;
+}
+
+.fgm {
+  width: 20px;
+  height: 20px;
+}
+
+.htm {
+  width: 20px;
+  height: 20px;
+}
+
+.cs {
+  width: 20px;
+  height: 20px;
+}
+
+.js {
+  width: 20px;
+  height: 20px;
+}
+
+.flu {
+  width: 20px;
+  height: 20px;
+}
+
+.ph {
+  width: 20px;
+  height: 20px;
+}
+
+[data-text="Figma"] {
+  font-size: 15px;
+}
+
+[data-text="HTML"] {
+  font-size: 15px;
+}
+
+[data-text="CSS"] {
+  font-size: 15px;
+}
+
+[data-text="PHP"] {
+  font-size: 15px;
+}
+
+[data-text="Flutter"] {
+  font-size: 15px;
+}
+
+[data-text="Javascript"] {
+  font-size: 15px;
+}
+
+.lineabout3 {
+ top: 153.5rem;
+ right: 10px;
+ height: 310px;
+}
+
+.abouttext4 {
+  top: 175rem;
+  right: -12px;
+}
+
+.lineabout4 {
+  height: 310px;
+ top: 179rem;
+ right: 9px;
+}
+
+  .containerproject {
+    top: 215rem;
+    left: 40.5px;
+    flex-direction: column; /* Ubah arah flex menjadi kolom */
+    align-items: center; /* Pusatkan konten dalam kolom */
+    gap: 20px; /* Sesuaikan jarak antar card */
+  }
+
+  .cardproj {
+    width: 100%; /* Buat card menjadi lebar penuh dalam kolom */
+    max-width: 500px; /* Set maksimum lebar card agar tidak terlalu besar */
+  }
+
+  .titlepro {
+    left: 60px;
+    top: 205rem;
+  }
+
+  .card {
+    top: 278rem;
+    left: -5rem;
+  }
+
+  .textexp {
+    text-align: center;
+    left: 23%;
+    top: 270rem;
+    
+  }
+
+  .imgs {
+    object-fit: cover;
+  }
+
+  .h1exp {
+    margin-left: 2rem;
+    font-size: 20px;
+    width: 100%;
+  }
+
+  .span1exp {
+    line-height: 25px;
+    margin-left: 2rem;
+    width: 100%;
+    font-size: 15px;
+  }
+
+  .titlecontact {
+    font-size: 35px;
+  }
+
+  .form-container {
+    left: -10px;
+    top: 355rem;
+  }
+  
+  .spancontact {
+    font-size: 15px;
+    line-height:2.5rem;
+  }
+
+  .textemail {
+    top: 6.5rem;
+    left: 20px;
+    font-size: 14px;
+  }
+
+  .form .input3 {
+  width: 100%;
+  padding: 10px 10px 10px 10px;
+}
+
+.form .input2 {
+  margin-right: 6rem;
+  width: 80%;
+  padding: 10px 10px 10px 10px;
+}
+
+.iconemail {
+  left: 160px;
+}
+
+.full {
+  margin-left: -10px;
+}
+
+.iconfull {
+  top: 6px;
+  left: 95px;
+width: 25px;
+height: 25px;
+}
+
+.form label .input,
+.form label .input01 {
+  width: 95%;
+  margin-right: 1rem;
+}
+
+.iconnumber {
+  margin-right: 1rem;
+left: 300px;
+}
+
+.iconmassage {
+  margin-right: 1rem;
+left: 295px;
+}
+
+.imagecontact {
+  display: none;
+}
+
+.footer-container {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-section {
+  width: 100%;
+  margin: 10px 0;
+}
+
+.footer {
+  height: 57.5%;
+  margin-top: 315rem;
+}
+
+.footer-list span {
+  font-size: 0.9em;
+}
+
+.footertext {
+  margin-top: 10px;
+  font-size: 10px;
+}
+
+.linefooter {
+  width:245px ;
+  margin-left: 12%;
+}
+
+
+
+
+
+
+
+
+
+
+
+  /* end media */
+}
+
+/* Keyframes for containerelemen animation */
+@keyframes slideInContainerelemen {
+  0% {
+    transform: translateX(30%); /* Off-screen */
+    opacity: 0; /* Hidden */
+  }
+  50% {
+    transform: translateX(-50%); /* Slide to original position */
+    opacity: 1; /* Fully visible */
+  }
+}
+
+/* Animation Keyframes */
+@keyframes bounce {
+  0%, 100% {
+    transform: translate(0px, 36px);
+  }
+  50% {
+    transform: translate(0px, 46px);
+  }
+}
+
+@keyframes bounce2 {
+  0%, 100% {
+    transform: translate(0px, 46px);
+  }
+  50% {
+    transform: translate(0px, 56px);
+  }
+}
+
+@keyframes umbral {
+  0% {
+    stop-color: #d310102e;
+  }
+  50% {
+    stop-color: rgba(211, 165, 16, 0.519);
+  }
+  100% {
+    stop-color: #d3a5102e;
+  }
+}
+
+@keyframes particles {
+  0%, 100% {
+    transform: translate(0px, 16px);
+  }
+  50% {
+    transform: translate(0px, 6px);
+  }
+
+  
+
+}
+
+
+
+
+
