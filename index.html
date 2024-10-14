@@ -11,6 +11,15 @@
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
+  <tbody id="main-content">
+   <div id="loader" class="loading-container">
+    <svg viewBox="0 0 240 240" height="240" width="240" class="pl">
+      <circle stroke-linecap="round" stroke-dashoffset="-330" stroke-dasharray="0 660" stroke-width="20" stroke="#000" fill="none" r="105" cy="120" cx="120" class="pl__ring pl__ring--a"></circle>
+      <circle stroke-linecap="round" stroke-dashoffset="-110" stroke-dasharray="0 220" stroke-width="20" stroke="#000" fill="none" r="35" cy="120" cx="120" class="pl__ring pl__ring--b"></circle>
+      <circle stroke-linecap="round" stroke-dasharray="0 440" stroke-width="20" stroke="#000" fill="none" r="70" cy="120" cx="85" class="pl__ring pl__ring--c"></circle>
+      <circle stroke-linecap="round" stroke-dasharray="0 440" stroke-width="20" stroke="#000" fill="none" r="70" cy="120" cx="155" class="pl__ring pl__ring--d"></circle>
+    </svg>
+    </div>
 
   <!-- Start area nav -->
 
@@ -864,8 +873,32 @@
   <script>
     AOS.init();
   </script>
+
+  <script>
+// Wait for the DOM to load
+document.addEventListener('DOMContentLoaded', function () {
+  // Wait for 1.5 seconds
+  setTimeout(function () {
+      // Fade out the loader
+      document.getElementById('loader').classList.add('fade-out');
+
+      // Wait for the fade-out transition to complete before hiding the loader
+      setTimeout(function () {
+          document.getElementById('loader').style.display = 'none'; // Hide loading screen
+
+          // Show main content with fade-in effect
+          const mainContent = document.getElementById('main-content');
+          mainContent.classList.add('fade-in');
+      }, 500); // 500 milliseconds to match the fade-out duration
+  }, 700); // 1500 milliseconds = 1.5 seconds
+});
+
+  </script>
+
+  
   
 
  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+</tbody>
 </body>
 </html>
